@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @lecture.content %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @lecture.user_id %>
+</p>
+
+<p>
+  <strong>Course:</strong>
+  <%= @lecture.course_id %>
+</p>
+
+<%= commontator_thread(@lecture)  %>
+
+<h4>leave your Opinion</h4>
+<%= link_to like_lecture_path(@lecture), method: :put do %>
+Like
+  <%= @lecture.get_upvotes.size %>
+<% end %>
+
+
+<%= link_to dislike_lecture_path(@lecture), method: :put do %>
+ Dislike
+  <%= @lecture.get_downvotes.size %>
+<% end %>
+
+
+
+<%= link_to ' Spam', {:controller => :lectures, :action => :spam, :id => @lecture.id } %>
+
+<%= link_to 'Edit', edit_lecture_path(@lecture) %> |
+<%= link_to 'Back', lectures_path %>
+
+
